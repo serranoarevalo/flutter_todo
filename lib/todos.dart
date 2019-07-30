@@ -9,7 +9,12 @@ class ToDos extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 40),
           child: Column(
-            children: <Widget>[Header()],
+            children: <Widget>[
+              DefaultTabController(
+                length: 2,
+                child: Header(),
+              )
+            ],
           ),
         ),
       ),
