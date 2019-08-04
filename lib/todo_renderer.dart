@@ -12,10 +12,13 @@ class ToDoRenderer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 40),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: this
             .toDos
-            .map((toDo) => ToDoComponent(text: toDo.payload))
+            .map((toDo) => ToDoComponent(
+                payload: toDo.payload, completed: toDo.completed, id: toDo.id))
             .toList(),
       ),
     );
