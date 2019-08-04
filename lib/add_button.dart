@@ -6,7 +6,7 @@ class AddButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: 50,
-      right: 0,
+      right: 40,
       child: Container(
         child: Container(
           width: 60,

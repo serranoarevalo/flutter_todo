@@ -5,8 +5,9 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width,
       child: Padding(
-          padding: EdgeInsets.only(top: 180),
+          padding: EdgeInsets.only(top: 180, left: 40, right: 40),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[

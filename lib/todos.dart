@@ -7,14 +7,26 @@ class ToDos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 40),
+        child: DefaultTabController(
+          length: 2,
           child: Stack(
             children: <Widget>[
-              DefaultTabController(
-                length: 2,
-                child: Header(),
+              Column(
+                children: <Widget>[
+                  Header(),
+                  Expanded(
+                    child: TabBarView(
+                      children: <Widget>[
+                        Container(
+                          child: Text("hi"),
+                        ),
+                        Container(
+                          child: Text("hi"),
+                        )
+                      ],
+                    ),
+                  )
+                ],
               ),
               AddButton()
             ],
