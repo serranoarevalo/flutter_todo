@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/add_button.dart';
+import 'package:flutter_todo/data.dart';
 import 'package:flutter_todo/header.dart';
+import 'package:flutter_todo/todo.dart';
+import 'package:flutter_todo/todo_renderer.dart';
+import 'package:provider/provider.dart';
 
 class ToDos extends StatelessWidget {
   @override
@@ -15,15 +19,17 @@ class ToDos extends StatelessWidget {
                 children: <Widget>[
                   Header(),
                   Expanded(
-                    child: TabBarView(
-                      children: <Widget>[
-                        Container(
-                          child: Text("hi"),
-                        ),
-                        Container(
-                          child: Text("hi"),
-                        )
-                      ],
+                    child: Consumer<ToDoModel>(
+                      builder: (context, toDos, child) => TabBarView(
+                        children: <Widget>[
+                          ToDoRenderer(
+                            toDos: toDos.pendingToDos,
+                          ),
+                          ToDoRenderer(
+                            toDos: toDos.completedToDos,
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
