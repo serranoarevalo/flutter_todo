@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/foundation.dart';
 
 class ToDo {
@@ -10,18 +8,25 @@ class ToDo {
 }
 
 class ToDoModel extends ChangeNotifier {
-  final List<ToDo> todosList = [
+  List<ToDo> toDosList = [
     ToDo("Order breakfast for Lynn", true, 0),
     ToDo("Do 80 pushups", false, 1),
-    ToDo("Take shower", false, 2),
+    ToDo("Take shower", false, 99),
     ToDo("Finish Avante", false, 3),
   ];
 
-  UnmodifiableListView<ToDo> get pendingToDos => UnmodifiableListView(
-        todosList.where((toDo) => !toDo.completed).toList(),
-      );
+  List<ToDo> get pendingToDos =>
+      toDosList.where((toDo) => !toDo.completed).toList()
+        ..sort((toDo, aToDo) => toDo.id - aToDo.id);
 
-  UnmodifiableListView<ToDo> get completedToDos => UnmodifiableListView(
-        todosList.where((toDo) => toDo.completed).toList(),
-      );
+  List<ToDo> get completedToDos =>
+      toDosList.where((toDo) => toDo.completed).toList()
+        ..sort((toDo, aToDo) => toDo.id - aToDo.id);
+
+  void move(ToDo item) {
+    final newToDo = ToDo(item.payload, !item.completed, item.id);
+    toDosList.remove(item);
+    toDosList.add(newToDo);
+    notifyListeners();
+  }
 }

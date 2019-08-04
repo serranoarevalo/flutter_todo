@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/data.dart';
 import 'package:flutter_todo/todo.dart';
@@ -7,7 +5,7 @@ import 'package:flutter_todo/todo.dart';
 class ToDoRenderer extends StatelessWidget {
   ToDoRenderer({@required this.toDos});
 
-  final UnmodifiableListView<ToDo> toDos;
+  final List<ToDo> toDos;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +16,8 @@ class ToDoRenderer extends StatelessWidget {
         children: this
             .toDos
             .map((toDo) => ToDoComponent(
-                payload: toDo.payload, completed: toDo.completed, id: toDo.id))
+                  toDo: toDo,
+                ))
             .toList(),
       ),
     );

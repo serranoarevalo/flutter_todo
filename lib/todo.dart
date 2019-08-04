@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/data.dart';
+import 'package:provider/provider.dart';
 
 class ToDoComponent extends StatelessWidget {
-  ToDoComponent(
-      {@required this.payload, @required this.completed, @required this.id});
+  ToDoComponent({@required this.toDo});
 
-  final String payload;
-  final bool completed;
-  final int id;
+  final ToDo toDo;
 
   @override
   Widget build(BuildContext context) {
@@ -14,20 +13,29 @@ class ToDoComponent extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 20),
       child: Row(
         children: <Widget>[
-          Container(
-            width: 30,
-            height: 30,
-            margin: EdgeInsets.only(right: 20),
-            decoration: BoxDecoration(
-              color: this.completed ? Colors.amberAccent : Colors.transparent,
-              borderRadius: BorderRadius.circular(15),
-              border: Border.all(
-                  color: this.completed ? Colors.amberAccent : Colors.blueGrey,
-                  width: 3),
+          GestureDetector(
+            onTap: () {
+              Provider.of<ToDoModel>(context, listen: false).move(this.toDo);
+            },
+            child: Container(
+              width: 30,
+              height: 30,
+              margin: EdgeInsets.only(right: 20),
+              decoration: BoxDecoration(
+                color: this.toDo.completed
+                    ? Colors.amberAccent
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                    color: this.toDo.completed
+                        ? Colors.amberAccent
+                        : Colors.blueGrey,
+                    width: 3),
+              ),
             ),
           ),
           Text(
-            this.payload,
+            this.toDo.payload,
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
           )
         ],

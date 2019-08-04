@@ -7,7 +7,7 @@ class AddButton extends StatelessWidget {
     return Positioned(
       bottom: 50,
       right: 40,
-      child: Container(
+      child: GestureDetector(
         child: Container(
           width: 60,
           height: 60,
