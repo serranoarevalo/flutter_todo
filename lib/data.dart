@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ToDo {
   final String payload;
@@ -8,12 +9,7 @@ class ToDo {
 }
 
 class ToDoModel extends ChangeNotifier {
-  List<ToDo> toDosList = [
-    ToDo("Order breakfast for Lynn", true, 0),
-    ToDo("Do 80 pushups", false, 1),
-    ToDo("Take shower", false, 99),
-    ToDo("Finish Avante", false, 3),
-  ];
+  List<ToDo> toDosList = [];
 
   List<ToDo> get pendingToDos =>
       toDosList.where((toDo) => !toDo.completed).toList()
@@ -28,5 +24,9 @@ class ToDoModel extends ChangeNotifier {
     toDosList.remove(item);
     toDosList.add(newToDo);
     notifyListeners();
+  }
+
+  ToDoModel() {
+    print("Model Initialized");
   }
 }

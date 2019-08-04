@@ -22,6 +22,7 @@ dependencies:
 
   flutter_icons: ^0.1.4
   provider: ^3.0.0
+  shared_preferences: ^0.5.3
 
 dev_dependencies:
   flutter_test:

@@ -11,7 +11,12 @@ class CustomTab extends StatelessWidget {
       decoration: BoxDecoration(color: Colors.transparent),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        child: Text(label),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+          ),
+        ),
       ),
     );
   }
