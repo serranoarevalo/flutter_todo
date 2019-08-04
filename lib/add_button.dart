@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 class AddButton extends StatelessWidget {
   @override
@@ -8,11 +9,17 @@ class AddButton extends StatelessWidget {
       right: 0,
       child: Container(
         child: Container(
-          width: 80,
-          height: 80,
+          width: 60,
+          height: 60,
           decoration: BoxDecoration(
-              color: Theme.of(context).accentColor,
-              borderRadius: BorderRadius.circular(40)),
+            color: Theme.of(context).accentColor,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: Icon(
+            Ionicons.getIconData("ios-add"),
+            color: Colors.white,
+            size: 35,
+          ),
         ),
       ),
     );
